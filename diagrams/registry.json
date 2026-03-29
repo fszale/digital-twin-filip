@@ -1,0 +1,16 @@
+{
+  "diagrams": [
+    {
+      "id": "twin-package-structure",
+      "file": "diagrams/twin-package-structure.mmd",
+      "description": "Portable twin package structure.",
+      "used_in": ["docs/architecture.md"]
+    },
+    {
+      "id": "twin-memory-boundary",
+      "file": "diagrams/twin-memory-boundary.mmd",
+      "description": "Portable versus factory-scoped memory for digital-twin-filip.",
+      "used_in": ["docs/architecture.md"]
+    }
+  ]
+}

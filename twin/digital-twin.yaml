@@ -1,0 +1,57 @@
+manifest_version: "1.0"
+twin_version: "0.1.0"
+twin_id: filip
+display_name: "Digital Twin Filip"
+owner_name: "Filip Szalewicz"
+owner_role: "Head of Engineering / Principal Operator"
+description: "Portable digital twin package for architecture, planning, strategy, project review, and artifact analysis."
+analysis_only: true
+
+capabilities:
+  - architecture_review
+  - project_review
+  - strategy_review
+  - implementation_planning
+  - artifact_analysis
+  - ai_system_design
+
+accepted_inputs:
+  - freeform_text
+  - github_url
+  - http_url
+  - file_upload
+  - markdown
+  - pdf
+  - json_payload
+
+produced_outputs:
+  - chat_response
+  - markdown_report
+  - structured_json
+  - generated_file
+  - artifact_bundle
+
+default_model_profiles:
+  fast: "provider/model-fast"
+  balanced: "provider/model-balanced"
+  deep: "provider/model-deep"
+
+default_budget_policy:
+  daily_token_limit: 500000
+  allowed_models:
+    - "provider/model-fast"
+    - "provider/model-balanced"
+    - "provider/model-deep"
+
+memory_policy:
+  portable_memory_exportable: true
+  factory_memory_exportable: false
+  promotion_requires_review: true
+
+discovery:
+  summary: "Filip's portable digital twin focused on engineering leadership, system design, planning, and artifact review."
+  strengths:
+    - "system architecture"
+    - "implementation planning"
+    - "AI factory and agent design"
+    - "artifact and repo review"

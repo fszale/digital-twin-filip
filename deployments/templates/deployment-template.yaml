@@ -1,0 +1,40 @@
+deployment_id: "filip__factory-slug"
+factory_id: "factory-slug"
+digital_twin_id: "filip"
+display_name: "Filip at Factory Name"
+analysis_only: true
+
+memory_namespace:
+  namespace_key: "filip__factory-slug"
+  portable_memory_enabled: true
+  factory_memory_exportable: false
+
+enabled_channels:
+  - web_chat
+  - slack
+
+allowed_models:
+  - "provider/model-fast"
+  - "provider/model-balanced"
+  - "provider/model-deep"
+
+default_model_profile: "balanced"
+
+budget_policy:
+  daily_token_limit: 300000
+  max_cost_per_day: 25.00
+  alert_at_pct: 0.80
+
+primary_metric:
+  metric_name: "usefulness_score"
+  baseline_value: 0.45
+  target_value: 0.75
+  direction: "higher_is_better"
+  measurement_method: "weekly_scored_runs"
+
+review_requirements:
+  portable_memory_promotion: required
+  policy_change: required
+  channel_change: required
+  high_cost_run: required
+  capability_change: required
