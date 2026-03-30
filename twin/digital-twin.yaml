@@ -32,16 +32,21 @@ produced_outputs:
   - artifact_bundle
 
 default_model_profiles:
-  fast: "provider/model-fast"
-  balanced: "provider/model-balanced"
-  deep: "provider/model-deep"
+  fast:
+    provider: "xai"
+    model: "grok-4.20-beta-0309-reasoning"
+  balanced:
+    provider: "xai"
+    model: "grok-4.20-beta-0309-reasoning"
+  deep:
+    provider: "xai"
+    model: "grok-4.20-beta-0309-reasoning"
 
 default_budget_policy:
   daily_token_limit: 500000
   allowed_models:
-    - "provider/model-fast"
-    - "provider/model-balanced"
-    - "provider/model-deep"
+    - "xai/grok-4.20-beta-0309-reasoning"
+    - "openai/chatgpt-default"
 
 memory_policy:
   portable_memory_exportable: true

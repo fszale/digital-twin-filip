@@ -182,7 +182,7 @@ A deployment overlay should define:
 - `memory_namespace`
 - `enabled_channels`
 - `allowed_models`
-- `default_model_profile`
+- `model_preferences`
 - `daily_token_limit`
 - `max_cost_per_day`
 - `allowed_input_types`

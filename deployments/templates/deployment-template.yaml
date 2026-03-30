@@ -14,11 +14,15 @@ enabled_channels:
   - slack
 
 allowed_models:
-  - "provider/model-fast"
-  - "provider/model-balanced"
-  - "provider/model-deep"
+  - "xai/grok-4.2"
+  - "openai/chatgpt-default"
 
-default_model_profile: "balanced"
+model_preferences:
+  preferred_provider: "xai"
+  preferred_model: "grok-4.2"
+  preferred_profile: "deep"
+  fallback_provider: "openai"
+  fallback_model: "chatgpt-default"
 
 budget_policy:
   daily_token_limit: 300000
@@ -38,3 +42,12 @@ review_requirements:
   channel_change: required
   high_cost_run: required
   capability_change: required
+
+human_handoff:
+  enabled: true
+  notify_channels:
+    - dashboard
+    - slack
+  synthesize_conversation: true
+  requested_human_id: "filip-owner"
+  response_sla_hours: 4
