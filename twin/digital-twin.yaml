@@ -53,6 +53,74 @@ memory_policy:
   factory_memory_exportable: false
   promotion_requires_review: true
 
+portable_skill_bundle:
+  bridge_type: "agent_kernel"
+  source_repo: "github.com/fszale/agent-kernel"
+  source_ref: "main"
+  skills:
+    - skill_id: "first-principles"
+      path: "skills/first-principles/SKILL.md"
+      description: "Decompose architecture and implementation problems to base assumptions."
+    - skill_id: "governance-hierarchy-design"
+      path: "skills/governance-hierarchy-design/SKILL.md"
+      description: "Trace objectives, strategies, tactics, and actions in recommendations."
+    - skill_id: "30-60-90-planning"
+      path: "skills/30-60-90-planning/SKILL.md"
+      description: "Turn implementation goals into phased plans."
+    - skill_id: "agentic-system-review"
+      path: "skills/agentic-system-review/SKILL.md"
+      description: "Review multi-agent and digital twin system designs."
+    - skill_id: "rate-of-improvement"
+      path: "skills/rate-of-improvement/SKILL.md"
+      description: "Frame success as measurable improvement over time."
+    - skill_id: "second-order-effects"
+      path: "skills/second-order-effects/SKILL.md"
+      description: "Surface downstream risks and unintended consequences."
+
+capability_routes:
+  architecture_review:
+    preferred_skills:
+      - "first-principles"
+      - "governance-hierarchy-design"
+      - "second-order-effects"
+    default_output: "markdown_report"
+  project_review:
+    preferred_skills:
+      - "first-principles"
+      - "30-60-90-planning"
+      - "rate-of-improvement"
+    default_output: "markdown_report"
+  strategy_review:
+    preferred_skills:
+      - "governance-hierarchy-design"
+      - "second-order-effects"
+      - "rate-of-improvement"
+    default_output: "structured_json"
+  implementation_planning:
+    preferred_skills:
+      - "30-60-90-planning"
+      - "governance-hierarchy-design"
+      - "first-principles"
+    default_output: "markdown_report"
+  artifact_analysis:
+    preferred_skills:
+      - "first-principles"
+      - "second-order-effects"
+    default_output: "chat_response"
+  ai_system_design:
+    preferred_skills:
+      - "agentic-system-review"
+      - "governance-hierarchy-design"
+      - "rate-of-improvement"
+    default_output: "markdown_report"
+
+portable_promotion_policy:
+  review_required: true
+  allowed_promotion_types:
+    - "portable_memory_entry"
+    - "portable_skill_patch"
+  promotion_artifact_format: "structured_patch"
+
 discovery:
   summary: "Filip's portable digital twin focused on engineering leadership, system design, planning, and artifact review."
   strengths:

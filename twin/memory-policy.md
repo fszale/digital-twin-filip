@@ -25,6 +25,7 @@ Portable memory includes:
 - generalized frameworks
 - reusable mental models
 - refined prompt patterns
+- reviewed portable skill patches
 - generalized lessons
 - approved non-proprietary heuristics
 
@@ -59,6 +60,13 @@ Required steps:
 
 Raw factory materials must never be copied directly into portable memory.
 
+Approved promotions may take one of two forms:
+
+- `portable_memory_entry`
+- `portable_skill_patch`
+
+`portable_skill_patch` is the preferred format when the learning is a reusable procedure rather than a fact or heuristic.
+
 ## Export Rule
 
 When the twin leaves a factory, export only:
@@ -83,8 +91,11 @@ Deployment-local self-improvement is allowed for:
 - retrieval tuning
 - artifact formatting preferences
 - model profile preferences within allowed lists
+- local priority tuning among enabled portable skills
 
 Portable memory changes are not auto-approved.
+
+Portable skill changes are also not auto-approved.
 
 ## Human Review Requirements
 

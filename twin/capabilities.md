@@ -121,6 +121,23 @@ Typical outputs:
 - governance recommendations
 - rollout plans
 
+## Portable Skill Bridge
+
+This package bridges into `agent-kernel` through a portable skill bundle declared in `twin/digital-twin.yaml`.
+
+The bridge exists to keep Filip portable while preserving reusable procedures such as:
+
+- first-principles decomposition
+- governance and traceability framing
+- phased implementation planning
+- system-review patterns
+- rate-of-improvement analysis
+- second-order-effects analysis
+
+These are portable defaults, not hardcoded runtime behavior.
+
+`digital-twin-factory` may enable only a subset of these skills per deployment and may tune routing locally without changing the portable twin.
+
 ## Expected Output Styles
 
 This twin typically returns:
@@ -139,6 +156,7 @@ This twin does not do the following in v1:
 - autonomous mutations of external systems
 - secret handling beyond platform-managed access
 - autonomous portable memory promotion
+- autonomous portable skill promotion
 - independent policy changes
 
 ## Review Sensitivities

@@ -51,3 +51,31 @@ human_handoff:
   synthesize_conversation: true
   requested_human_id: "filip-owner"
   response_sla_hours: 4
+
+enabled_portable_skills:
+  - "first-principles"
+  - "governance-hierarchy-design"
+  - "30-60-90-planning"
+  - "rate-of-improvement"
+
+memory_features:
+  session_search: true
+  summary_layers: true
+  retrieval_trace_logging: true
+
+scheduled_jobs:
+  - job_id: "score-runs"
+    job_type: "run_scoring"
+    schedule: "on_run_complete"
+    enabled: true
+    delivery_mode: "internal_only"
+  - job_id: "detect-patterns"
+    job_type: "pattern_detection"
+    schedule: "daily"
+    enabled: true
+    delivery_mode: "internal_only"
+  - job_id: "review-promotions"
+    job_type: "portable_promotion_review"
+    schedule: "weekly"
+    enabled: true
+    delivery_mode: "dashboard"
