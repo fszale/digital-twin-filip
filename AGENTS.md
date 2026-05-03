@@ -1,40 +1,35 @@
 # AGENTS.md
 
-Read [CONTEXT.md](CONTEXT.md) first.
+Guidance for AI coding agents working in `digital-twin-filip`.
 
-## Repo Purpose
+## Scope of this repo
 
-`digital-twin-filip` is the portable twin package for Filip.
+This repo holds **role bindings**, not runtime code. Every file under `roles/` is a YAML manifest that conforms to the kernel's `agent-spec-domain-template.yaml` shape. The actual capabilities live in [`agent-kernel`](https://github.com/fszale/agent-kernel)'s skill catalog; the runtime that loads them lives in [`agent-factory`](https://github.com/fszale/agent-factory).
 
-This repo should remain:
+## What you can do here
 
-- person-specific
-- portable across factories
-- analysis-only in v1
-- free of raw factory-confidential data
+- Edit the root docs (`README.md`, `AGENTS.md`, `CLAUDE.md`, `CONTEXT.md`) for clarity, accuracy, and freshness.
+- Add a new role binding under `roles/` by following [`.agents/workflows/add-new-role-spec/`](./.agents/workflows/add-new-role-spec/).
+- Update an existing role's `active_capabilities` when the kernel adds a skill that the role legitimately needs.
+- Add or revise repo-specific skills under `.agents/skills/`.
 
-## Working Rules
+## What you should not do here
 
-1. Do not place factory-specific transcripts or proprietary artifacts in this repo.
-2. Keep portable memory distinct from factory-scoped memory.
-3. Update `twin/digital-twin.yaml` when capability or contract boundaries change.
-4. Keep diagrams and docs synchronized with the scripts in `scripts/`.
-5. When editing the package contract, update:
-   - `twin/digital-twin.yaml`
-   - `twin/capabilities.md`
-   - `twin/input-contracts.md`
-   - `twin/output-contracts.md`
-   - `twin/memory-policy.md`
+- Do not invent skills here. If a role needs a new capability, add the skill upstream in `agent-kernel/skills/` first, then bind it from a role.
+- Do not change the kernel contract from inside this repo. The four-file twin shape is owned by `agent-kernel`.
+- Do not add runtime code, tests, or build tooling. This repo is declarative.
+- Do not edit roles to chase aesthetic consistency at the cost of accuracy. Each role is allowed to look slightly different where the principal really does work differently in that mode.
 
-## First Files To Read
+## Tone
 
-- [CONTEXT.md](CONTEXT.md)
-- [docs/architecture.md](docs/architecture.md)
-- [twin/digital-twin.yaml](twin/digital-twin.yaml)
-- [twin/memory-policy.md](twin/memory-policy.md)
+Write like Filip would. Short sentences. Plain language. No hype, no marketing voice. The audience is engineers and the principals they work for.
 
-## Agent Workflow Hints
+## When you finish
 
-- Use `.agents/skills/project-navigation.md` for orientation.
-- Use `.agents/skills/twin-packaging.md` before editing package contracts.
-- Use `.agents/workflows/run-doc-checks.md` after changing docs or diagrams.
+A reader should be able to answer in under five minutes:
+
+1. What is a digital twin in this ecosystem?
+2. Which roles does this twin currently support?
+3. How would I add a new role?
+
+If a doc no longer helps with one of those, fix it or remove it.
