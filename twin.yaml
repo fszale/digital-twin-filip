@@ -1,0 +1,62 @@
+# twin.yaml — Filip's bridge contract (the reference bridge implementation).
+# Validates against agent-factory/schemas/twin.schema.json.
+# Built + deployed through: `factory twin build twin.yaml` → `factory twin deploy <artifact> --cloud ...`
+
+twin:
+  name: filip
+  description: "Filip's principal-operator twin — fractional CTO, agentic systems advisor."
+  owner: fszale@gmail.com
+
+  kernel:
+    source: github.com/fszale/agent-kernel
+    version: v1.0.0          # PINNED — bump explicitly to upgrade; never a branch
+
+  roles:
+    - principal-operator
+    - fractional-cto
+
+  # Capability → provider routing. No hardcoded model choices in code.
+  models:
+    research:
+      provider: openai
+      model: gpt-4o
+      api_key_env: OPENAI_API_KEY
+    social:
+      provider: xai
+      model: grok-3
+      api_key_env: XAI_API_KEY
+    engineering:
+      provider: xai
+      model: grok-3
+      api_key_env: XAI_API_KEY
+    default:
+      provider: xai
+      model: grok-3
+      api_key_env: XAI_API_KEY
+
+  autonomy:
+    mode: propose-then-confirm    # Product default — forced unless full_autonomy.enabled=true
+    auto_allow:
+      - search
+      - read
+      - summarize
+      - reminder
+    always_gate:
+      - send
+      - post
+      - purchase
+      - deploy
+    full_autonomy:
+      enabled: false              # Opt-in only; requires a valid guardrails block
+      guardrails:
+        daily_token_limit: 2000000
+        daily_usd_limit: 25.00
+        per_task_token_limit: 200000
+        max_actions_per_hour: 60
+        allowed_actions:
+          - search
+          - read
+          - summarize
+          - research
+          - engineer
+        kill_switch: true
